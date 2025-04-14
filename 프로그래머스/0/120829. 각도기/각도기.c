@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 int solution(int angle) {
+    
     int answer = 0;
     
     if (angle<90) answer = 1;
