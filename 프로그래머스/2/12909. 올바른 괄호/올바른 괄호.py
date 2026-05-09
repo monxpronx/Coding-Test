@@ -2,20 +2,18 @@
 
 def solution(s):
     answer = True
-    flag = 0
 
+    stack = []
+    
     for ch in s:
-        
-        if ch == '(':
-            flag += 1
-        elif ch == ')':
-            flag -= 1
-        
-        if flag < 0:
-            answer = False
-            break
-            
-    if flag != 0:
+        if ch=='(':
+            stack.append(0)
+        else:
+            if len(stack)==0:
+                return False
+            stack.pop()
+    
+    if len(stack)!=0:
         answer = False
     
     return answer
