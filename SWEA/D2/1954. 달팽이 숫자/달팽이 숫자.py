@@ -7,23 +7,19 @@ for i in range(1, T+1):
     n = int(input())
     
     # nxn의 0행렬 생성
-    matrix = []
-    for j in range(n):
-        matrix.append([0]*n)
+    matrix = [[0]*n for _ in range(n)]
     
     # 초기값 설정
     x, y = 0, 0
     d = 0
     dx = [0, 1, 0, -1]
     dy = [1, 0, -1, 0]
-    num = 1
 
     # 시뮬레이션
-    while num <= n*n:
+    for num in range(1, n*n+1):
 
         matrix[x][y] = num
 
-        num+=1
         nx = x + dx[d]
         ny = y + dy[d]
         
