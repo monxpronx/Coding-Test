@@ -15,9 +15,9 @@ for t in range(1, T+1):
 
     # 가로 검사
     for i in range(N):
-        for j in range(N-K+1): ### j = 0,1,2
+        for j in range(N-K+1):
             sum_ij = 0
-            for k in range(K): ### k = 0,1,2
+            for k in range(K):
                 sum_ij += arr[i][j+k]
             if sum_ij == K:
                 if (j == 0 or arr[i][j-1] == 0) and (j+k+1 == N or arr[i][j+k+1]==0):
