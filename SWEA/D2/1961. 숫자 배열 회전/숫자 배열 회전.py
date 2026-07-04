@@ -1,4 +1,4 @@
-# 260518
+# 260704
 
 T = int(input())
 
@@ -6,44 +6,36 @@ for t in range(1, T+1):
 
     N = int(input())
 
-    matrix = []
+    arr = []
     for _ in range(N):
         tmp = list(map(int, input().split()))
-        matrix.append(tmp)
+        arr.append(tmp)
 
+    
+    new_line = [""] * N
 
-    str_list = [""] * N
-
-    # 90도 회전 행렬
-    new_idx = 0
+    # 90도 회전 모양
     for j in range(N):
-        string = ""
         for i in range(N-1, -1, -1):
-            string += str(matrix[i][j])
-        str_list[new_idx] += string
-        str_list[new_idx] += " "
-        new_idx += 1
+            new_line[j] += str(arr[i][j])
 
-    # 180도 회전 행렬
-    new_idx = 0
+    for n in range(N):
+        new_line[n] += " "
+
+    # 180도 회전 모양
     for i in range(N-1, -1, -1):
-        string = ""
         for j in range(N-1, -1, -1):
-            string += str(matrix[i][j])
-        str_list[new_idx] += string
-        str_list[new_idx] += " "
-        new_idx += 1
+            new_line[N-i-1] += str(arr[i][j])
 
-    # 270도 회전 행렬
-    new_idx = 0
+    for n in range(N):
+        new_line[n] += " "
+
+    # 270도 회전 모양
     for j in range(N-1, -1, -1):
-        string = ""
         for i in range(N):
-            string += str(matrix[i][j])
-        str_list[new_idx] += string
-        new_idx += 1
+            new_line[N-j-1] += str(arr[i][j])
 
-    # 출력
+    
     print("#{}".format(t))
     for n in range(N):
-        print(str_list[n])
+        print(new_line[n])
