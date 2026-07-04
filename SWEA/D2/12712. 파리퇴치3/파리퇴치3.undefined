@@ -1,0 +1,53 @@
+# 260704
+
+T = int(input())
+
+for t in range(1, T+1):
+
+    N, M = map(int, input().split())
+
+    arr = []
+    for n in range(N):
+        tmp = list(map(int, input().split()))
+        arr.append(tmp)
+
+
+    # '+'모양으로 퇴치한 최대 수
+    def plus(arr):
+        dx = [-1, 1, 0, 0]
+        dy = [0, 0, -1, 1]
+        max_fly = 0
+        for x in range(N):
+            for y in range(N):
+                fly = arr[x][y]
+
+                for d in range(4): # 네 방향
+                    for dist in range(1, M): # 칸 수
+                        nx = x + (dx[d] * dist) # 다음 x좌표
+                        ny = y + (dy[d] * dist) # 다음 y좌표
+                        if 0 <= nx < N and 0 <= ny < N:
+                            fly += arr[nx][ny]
+                max_fly = max(max_fly, fly)
+        return max_fly
+        
+    
+    # 'x'모양으로 퇴치한 최대 수
+    def cross(arr):
+        dx = [-1, -1, 1, 1]
+        dy = [-1, 1, -1, 1]
+        max_fly = 0
+        for x in range(N):
+            for y in range(N):
+                fly = arr[x][y]
+
+                for d in range(4): # 네 방향
+                    for dist in range(1, M): # 칸 수
+                        nx = x + (dx[d] * dist) # 다음 x좌표
+                        ny = y + (dy[d] * dist) # 다음 y좌표
+                        if 0 <= nx < N and 0 <= ny < N:
+                            fly += arr[nx][ny]
+                max_fly = max(max_fly, fly)
+        return max_fly
+
+    max_fly = max(plus(arr), cross(arr))
+    print("#{} {}". format(t, max_fly))
